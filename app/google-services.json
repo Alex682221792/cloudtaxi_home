@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "121137591628",
+    "firebase_url": "https://cloudtaxi-8dd82.firebaseio.com",
+    "project_id": "cloudtaxi-8dd82",
+    "storage_bucket": "cloudtaxi-8dd82.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:121137591628:android:742588eec9119437",
+        "android_client_info": {
+          "package_name": "com.advlatam.cloudtaxi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "121137591628-c98uhu5gf5dsjb31fr0she73b22vhke3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBm62HuMGHUlykGDgIm04YcAM5RJNfEgM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "121137591628-c98uhu5gf5dsjb31fr0she73b22vhke3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

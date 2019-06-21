@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">cloudtaxi</string>
+
+    <string name="navigation_drawer_open">OPEN</string>
+    <string name="navigation_drawer_close">CLOSE</string>
+    <string name="textButtonLogin">ENTRAR</string>
+    <string name="textButtonCrear">CREAR</string>
+
+
+    <string name="hintPass">Password</string>
+    <string name="hintNombre">Ingresa tu nombre</string>
+    <string name="hintEmail">Email</string>
+
+    <string name="labelMarkerHere">Estás aquí!</string>
+    <string name="labelMarkerGoal">Tu destino!</string>
+
+    <string name="msgEmptyFields">Uno o varios campos del formulario se encuentran vacios.</string>
+</resources>
