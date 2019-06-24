@@ -18,7 +18,6 @@ class LoginActivity : ActivityBase(), ILoginView{
     lateinit var presenter: ILoginPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        println("*!*!*!**!*!*! login activity")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login_view)
         this.initLoginPresenter()

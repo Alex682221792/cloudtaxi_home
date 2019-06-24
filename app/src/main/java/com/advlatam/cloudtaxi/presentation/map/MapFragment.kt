@@ -9,9 +9,14 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.advlatam.cloudtaxi.R
+import com.advlatam.cloudtaxi.domain.interactors.taxirequest.SendTaxiRequestInteractorImpl
+import com.advlatam.cloudtaxi.presentation.map.presenter.IRequestTaxiPresenter
+import com.advlatam.cloudtaxi.presentation.map.presenter.RequestTaxiPresenterImpl
+import com.advlatam.cloudtaxi.presentation.map.view.IMapFragment
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.*
@@ -20,9 +25,10 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.map_view.*
 
-class MapFragment: Fragment(),
+class MapFragment: Fragment(), IMapFragment,
     GoogleMap.OnMarkerClickListener {
 
+    lateinit var requestTaxiPresenter : IRequestTaxiPresenter
 
     private var googleMap: GoogleMap? = null
 
@@ -35,12 +41,14 @@ class MapFragment: Fragment(),
     override fun onCreate(savedInstanceState: Bundle?) {
         println("********on  create map")
         super.onCreate(savedInstanceState)
+        this.initPresenter()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, bundle: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.map_view,container,false)
-
+        this.initButtons(view)
         var mMapView =  view.findViewById(R.id.fragment_map) as MapView
+
         mMapView.onCreate(bundle)
 
         mMapView.onResume()
@@ -106,6 +114,24 @@ class MapFragment: Fragment(),
         this.googleMap?.addMarker(markerOptions)
     }
 
+    private fun initPresenter(){
+        this.requestTaxiPresenter = RequestTaxiPresenterImpl(SendTaxiRequestInteractorImpl())
+        this.requestTaxiPresenter.attachView(this)
+    }
 
+    private fun initButtons(contenedor: View){
+        var buttonSendReq = contenedor.findViewById(R.id.btnRequestNow) as Button
+        buttonSendReq.setOnClickListener {
+            this.sendRequest()
+        }
+    }
+
+    private fun sendRequest(){
+        this.requestTaxiPresenter.sendTaxiRequest(
+            this.lastLocation.latitude,
+            this.lastLocation.longitude,
+            1
+        )
+    }
 
 }
